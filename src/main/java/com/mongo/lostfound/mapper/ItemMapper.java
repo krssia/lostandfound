@@ -2,11 +2,8 @@ package com.mongo.lostfound.mapper;
 
 import com.mongo.lostfound.dto.ItemBaseDTO;
 import com.mongo.lostfound.dto.ItemPostDTO;
-import com.mongo.lostfound.dto.ItemPutDTO;
-import com.mongo.lostfound.vo.ItemSearchVO;
 import com.mongo.lostfound.vo.ItemVO;
 import com.mongo.lostfound.entity.Item;
-import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -29,15 +26,6 @@ public class ItemMapper {
         return convert(dto);
     }
 
-    public Item toEntity(ItemPutDTO dto) {
-        return convert(dto);
-    }
-
-    public ItemSearchVO toSearchVO(Item item) {
-        ItemSearchVO vo = new ItemSearchVO();
-        BeanUtils.copyProperties(toVO(item), vo);
-        return vo;
-    }
     public ItemVO toVO(Item item) {
         if (item == null) return null;
         ItemVO vo = new ItemVO();

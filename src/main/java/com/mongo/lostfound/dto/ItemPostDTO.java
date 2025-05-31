@@ -19,13 +19,13 @@ public class ItemPostDTO implements ItemBaseDTO {
     private String description;
 
     @NotNull(message = "经度不能为空")
-    @DecimalMin(value = "-180.0", inclusive = true, message = "经度不能小于 -180")
-    @DecimalMax(value = "180.0", inclusive = true, message = "经度不能大于 180")
+    @DecimalMin(value = "-180.0", message = "经度不能小于 -180")
+    @DecimalMax(value = "180.0", message = "经度不能大于 180")
     private Double longitude;
 
     @NotNull(message = "纬度不能为空")
-    @DecimalMin(value = "-90.0", inclusive = true, message = "纬度不能小于 -90")
-    @DecimalMax(value = "90.0", inclusive = true, message = "纬度不能大于 90")
+    @DecimalMin(value = "-90.0", message = "纬度不能小于 -90")
+    @DecimalMax(value = "90.0", message = "纬度不能大于 90")
     private Double latitude;
 
     @Schema(example = "1995-07-22T21:41:30.000+08:00")
