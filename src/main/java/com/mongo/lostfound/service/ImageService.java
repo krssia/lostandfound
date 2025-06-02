@@ -1,7 +1,6 @@
 package com.mongo.lostfound.service;
 
 import com.mongodb.client.gridfs.GridFSBucket;
-import com.mongodb.client.gridfs.GridFSDownloadStream;
 import com.mongodb.client.gridfs.model.GridFSFile;
 import com.mongodb.client.model.Filters;
 import lombok.RequiredArgsConstructor;
