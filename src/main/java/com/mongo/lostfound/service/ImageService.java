@@ -58,8 +58,7 @@ public class ImageService {
         GridFSFile file = getImage(imageId);
         if (file == null) return null;
 
-        GridFSDownloadStream downloadStream = gridFSBucket.openDownloadStream(file.getObjectId());
-        return downloadStream;
+        return gridFSBucket.openDownloadStream(file.getObjectId());
     }
 
     public String getFileExtension(GridFSFile file) {
@@ -72,25 +71,26 @@ public class ImageService {
             }
         }
 
-        if (contentType.equals("image/jpeg") || contentType.equals("image/jpg")) {
-            return ".jpg";
-        } else if (contentType.equals("image/png")) {
-            return ".png";
-        } else if (contentType.equals("image/gif")) {
-            return ".gif";
-        } else {
-            String filename = file.getFilename();
-            if (filename != null) {
-                filename = filename.toLowerCase();
+        switch (contentType) {
+            case "image/jpeg", "image/jpg" -> {
+                return ".jpg";
+            }
+            case "image/png" -> {
+                return ".png";
+            }
+            case "image/gif" -> {
+                return ".gif";
+            }
+            default -> {
+                String filename = file.getFilename().toLowerCase();
                 if (filename.endsWith(".jpg")) {
                     return ".jpg";
                 } else if (filename.endsWith(".png")) {
                     return ".png";
                 }
+                return ".dat";
             }
-            return ".dat";
         }
     }
-
 }
 

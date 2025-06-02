@@ -33,7 +33,7 @@ public class ImageController {
 
         InputStream inputStream = imageService.getImageStream(imageId);
 
-        String filename = Optional.ofNullable(file.getFilename())
+        String filename = Optional.of(file.getFilename())
                 .orElse(imageId + imageService.getFileExtension(file));
 
         MediaType contentType = MediaType.APPLICATION_OCTET_STREAM;
